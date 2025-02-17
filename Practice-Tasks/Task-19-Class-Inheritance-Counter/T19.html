@@ -1,0 +1,89 @@
+<!-- Task 19 - Implement a Counter using Class & Inheritance
+Objective: Create a counter using JavaScript classes and inheritance. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 19 - Class Inheritance Counter</title>
+    <style>
+        body {
+            background-color: #212121;
+            color: white;
+            font-family: monospace;
+            text-align: center;
+        }
+
+        #counterCountValue {
+            font-size: 2rem;
+            margin: 1rem 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            background-color: #2e5fff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #1b48d1;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Counter</h1>
+    <div id="counterCountValue">0</div>
+    <button id="addBtn">+</button>
+    <button id="subBtn">-</button>
+    <button id="dlbBtn">×2</button>
+    <button id="resetBtn">Reset</button>
+
+    <script>
+        class Counter {
+            constructor() {
+                this.count = 0;
+            }
+            increase() {
+                this.count++;
+                this.updateCounterDisplay();
+            }
+            decrease() {
+                if (this.count > 0) {
+                    this.count--;
+                    this.updateCounterDisplay();
+                }
+            }
+            reset() {
+                this.count = 0;
+                this.updateCounterDisplay();
+            }
+            updateCounterDisplay() {
+                document.getElementById('counterCountValue').innerText = this.count;
+            }
+        }
+
+        class AdvancedCounter extends Counter {
+            doubleCount() {
+                this.count *= 2;
+                this.updateCounterDisplay();
+            }
+        }
+
+        let counter = new AdvancedCounter();
+
+        document.getElementById('addBtn').addEventListener('click', () => counter.increase());
+        document.getElementById('subBtn').addEventListener('click', () => counter.decrease());
+        document.getElementById('dlbBtn').addEventListener('click', () => counter.doubleCount());
+        document.getElementById('resetBtn').addEventListener('click', () => counter.reset());
+    </script>
+</body>
+
+</html>

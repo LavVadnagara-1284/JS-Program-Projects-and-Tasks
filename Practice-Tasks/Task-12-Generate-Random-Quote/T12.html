@@ -1,0 +1,37 @@
+<!-- Task 12 - Generate a Random Quote
+Objective: Display a random quote from a predefined list when a button is clicked. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 12 - Generate a Random Quote</title>
+</head>
+<body style="background-color: #212121; color: white; font-family: monospace; text-align: center;">
+    <h1>Random Quote</h1>
+    <button type="button" id="randomQuoteBtn" style="padding: 10px 20px; font-size: 16px; cursor: pointer;">Get a Random Quote</button>
+    <div id="quoteContainer" style="margin-top: 20px; font-size: 18px; font-style: italic;"></div>
+
+</body>
+<script>
+    const quotes = [
+        "The only way to do great work is to love what you do. - Steve Jobs",
+        "Success is not final, failure is not fatal: it is the courage to continue that counts. - Winston Churchill",
+        "Do what you can, with what you have, where you are. - Theodore Roosevelt",
+        "Happiness depends upon ourselves. - Aristotle",
+        "Your time is limited, so do not waste it living someone else’s life. - Steve Jobs",
+        "The cure for anything is saltwater: sweat, tears, or the sea. - Isak Dinesen (Karen Blixen)",
+        "What is done in love is done well. - Vincent Van Gogh",
+        "Sometimes the smallest things take up the most room in your heart. - Winnie the Pooh (A.A. Milne)",
+        "The sky broke like an egg into full sunset, and the water caught fire. - Pamela Hansford Johnson",
+        "To wish you were someone else is to waste the person you are. - Ayushmann Khurrana"
+    ];
+
+    document.getElementById('randomQuoteBtn').addEventListener('click', function() {
+        const randomIndex = Math.floor(Math.random() * quotes.length);
+        document.getElementById('quoteContainer').innerHTML = `\`${quotes[randomIndex]}\``;
+    });
+
+</script>
+</html>

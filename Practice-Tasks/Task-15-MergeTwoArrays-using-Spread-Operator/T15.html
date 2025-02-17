@@ -1,0 +1,124 @@
+<!-- Task 15 - Merge Two Arrays using Spread Operator
+Objective: Merge two arrays, remove duplicates, and sort them in ascending order. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 15 - Merge Two Arrays using Spread Operator</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            background-color: #212121;
+            color: white;
+            font-family: monospace;
+            text-align: center;
+        }
+
+        input {
+            padding: 10px;
+            width: 80%;
+            max-width: 400px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+            text-align: center;
+        }
+
+        #mergeBtn {
+            padding: 0.7rem 1.5rem;
+            font-size: 1rem;
+            background: #2e5fff;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #mergeBtn:hover {
+            background: #2346b8;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.9rem;
+        }
+
+        .result {
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Merge Two Arrays using Spread Operator</h1>
+
+    <input type="text" id="array1Input" placeholder="Enter numbers for Array 1 (comma-separated)">
+    <div id="error1" class="error"></div>
+
+    <input type="text" id="array2Input" placeholder="Enter numbers for Array 2 (comma-separated)">
+    <div id="error2" class="error"></div>
+
+    <br>
+    <button id="mergeBtn">Merge & Sort</button>
+
+    <h2>Original Arrays</h2>
+    <div id="originalArrays" class="result"></div>
+
+    <h2>Merged & Sorted Array</h2>
+    <div id="mergedArray" class="result"></div>
+
+</body>
+
+<script>
+    document.getElementById('mergeBtn').addEventListener('click', function () {
+        let array1Input = document.getElementById('array1Input');
+        let array2Input = document.getElementById('array2Input');
+        let error1 = document.getElementById('error1');
+        let error2 = document.getElementById('error2');
+
+        // Trim extra spaces
+        array1Input.value = array1Input.value.trim();
+        array2Input.value = array2Input.value.trim();
+
+        let array1 = array1Input.value.split(',').map(num => parseFloat(num.trim())).filter(num => !isNaN(num));
+        let array2 = array2Input.value.split(',').map(num => parseFloat(num.trim())).filter(num => !isNaN(num));
+
+        // Error handling for empty inputs
+        if (!array1Input.value) {
+            error1.textContent = "Please enter valid numbers.";
+        } else {
+            error1.textContent = "";
+        }
+
+        if (!array2Input.value) {
+            error2.textContent = "Please enter valid numbers.";
+        } else {
+            error2.textContent = "";
+        }
+
+        if (array1.length === 0 || array2.length === 0) {
+            document.getElementById('mergedArray').innerHTML = "";
+            return;
+        }
+
+        document.getElementById('originalArrays').innerHTML = `Array 1: [${array1}] <br> Array 2: [${array2}]`;
+
+        let mergedArray = [...array1, ...array2];
+        let uniqueSortedArray = [...new Set(mergedArray)].sort((a, b) => a - b);
+
+        document.getElementById('mergedArray').innerHTML = `Merged & Sorted Array: [${uniqueSortedArray}]`;
+    });
+
+</script>
+
+</html>

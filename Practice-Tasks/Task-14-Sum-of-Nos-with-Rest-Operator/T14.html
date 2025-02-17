@@ -1,0 +1,46 @@
+<!-- Task 14 - Sum of Numbers using Rest Operator
+Objective: Use the rest operator to accept multiple numbers and return their sum. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 14 - Sum of Numbers using Rest Operator</title>
+</head>
+
+<body style="background-color: #212121; color: white; font-family: monospace; text-align: center;">
+    <h1>Sum of Numbers using Rest Operator</h1>
+
+    <input type="text" id="numberInput" placeholder="Enter numbers separated by commas"
+        style="padding: 10px; width: 80%; max-width: 400px; margin: 10px;">
+
+    <button id="calculateBtn" style="padding: 10px 15px; cursor: pointer;">Calculate Sum</button>
+
+    <div id="result" style="margin-top: 20px; font-size: 18px;"></div>
+
+</body>
+<script>
+    function sum(...numbers) {
+        return numbers.reduce((acc, curr) => acc + curr, 0);
+    }
+
+    document.getElementById('calculateBtn').addEventListener('click', function () {
+        let input = document.getElementById('numberInput').value;
+        let numberArray = input
+            .split(',') // Splits the input string by commas (",")
+            .map(num => parseFloat(num.trim())) // Converts each value to a floating-point number after trimming spaces
+            .filter(num => !isNaN(num)); // Removes any invalid values (e.g., empty strings or non-numeric values)
+
+
+        if (numberArray.length === 0) {
+            document.getElementById('result').innerHTML = "Please enter valid numbers.";
+            return;
+        }
+
+        document.getElementById('result').innerHTML = `The sum of ${numberArray.join(', ')} is ${sum(...numberArray)}`;
+    });
+</script>
+
+</html>

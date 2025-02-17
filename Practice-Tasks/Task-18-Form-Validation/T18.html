@@ -1,0 +1,147 @@
+<!-- Task 18 - Create a Simple Form with Validation
+Objective: Validate user inputs in a form before submission. -->
+
+<!-- Steps:
+1. Create an HTML form with three input fields: Name, Email, and Password.
+2. Add a submit button.
+3. Write a JavaScript function to validate the inputs:
+-> Name should be at least three characters long.
+-> Email should contain @ and a domain (.com, .net, etc.).
+-> Password should have at least six characters.
+4. Prevent form submission if validation fails using event.preventDefault().
+5. Display error messages next to the corresponding input fields.
+6. Style the form with CSS for better readability. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 18 - Form Validation</title>
+    <style>
+        body {
+            background-color: #212121;
+            color: white;
+            font-family: monospace;
+            text-align: center;
+            display: flex;
+            /* justify-content: center; */
+            align-items: center;
+            flex-direction: column;
+            /* height: 100vh; */
+            margin: 0;
+        }
+
+        form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+            width: fit-content;
+        }
+
+        label {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            font-size: 14px;
+        }
+
+        input {
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #444;
+            border-radius: 5px;
+            background: #252525;
+            color: white;
+        }
+
+        input:focus {
+            border-color: #2e5fff;
+            outline: none;
+            box-shadow: 0 0 5px #2e5fff;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #2e5fff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #1b48d1;
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        span {
+            font-size: 1rem;
+            color: red;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Form Validation</h1>
+    <form id="myFrom">
+        <label for="nameData">Name: <input type="text" name="nameData" id="nameData">
+            <span id="nameRes"></span></label>
+        <br><br>
+        <label for="emailData">Email: <input type="email" name="emailData" id="emailData">
+            <span id="emailRes"></span></label>
+        <br><br>
+        <label for="passwordData">Password: <input type="password" name="passwordData" id="passwordData">
+            <span id="pswdRes"></span></label>
+        <br><br>
+        <button id="submitBtn">Submit</button>
+    </form>
+</body>
+
+<script>
+
+    document.getElementById('submitBtn').addEventListener('click', function (event) {
+        let name = document.getElementById('nameData').value.trim();
+        let email = document.getElementById('emailData').value.trim();
+        let passWord = document.getElementById('passwordData').value.trim();
+        event.preventDefault();
+        if (name.length < 3) {
+            document.getElementById('nameRes').textContent = "Name should be at least 3 characters long.";
+            return;
+        } else {
+            document.getElementById('nameRes').textContent = `${name}`;
+            document.getElementById('nameRes').style.color = "green";
+        }
+
+        let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|net|org|edu|gov|mil|co|io|info|biz|us|uk|in|ca|au)$/i;
+        if (!emailPattern.test(email)) {
+            document.getElementById('emailRes').textContent = "Invalid email format.";
+            return;
+        } else {
+            document.getElementById('emailRes').textContent = `${email}`;
+            document.getElementById('emailRes').style.color = "green";
+        }
+
+        if (passWord.length < 6) {
+            document.getElementById('pswdRes').textContent = "Password should be at least 6 characters long.";
+            return;
+        } else {
+            document.getElementById('pswdRes').textContent = `${passWord}`;
+            document.getElementById('pswdRes').style.color = "green";
+        }
+        alert("Form submitted successfully!");
+        document.getElementById('myFrom').reset();
+    })
+
+</script>
+
+</html>

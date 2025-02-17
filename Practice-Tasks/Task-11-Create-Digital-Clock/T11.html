@@ -1,0 +1,35 @@
+<!-- Task 11 - Create a Digital Clock
+Objective: Create a real-time digital clock that updates every second. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 11 - Create a Digital Clock</title>
+</head>
+
+<body style="background-color: #212121; color: white; font-family: monospace; text-align: center;">
+    <h1>A Digital Clock</h1>
+    <div id="clock" style="font-size: 1rem; margin-top: 20px;"></div>
+</body>
+<script>
+    function updateTime() {
+        let now = new Date();
+        let hours = String(now.getHours()).padStart(2, '0');
+        let minutes = String(now.getMinutes()).padStart(2, '0');
+        let seconds = String(now.getSeconds()).padStart(2, '0');
+        
+        let formattedTime;
+        let amPm = hours >= 12 ? "PM" : "AM";
+        hours = hours % 12 || 12;  // Convert 24-hour to 12-hour format
+        formattedTime = `${hours}:${minutes}:${seconds} ${amPm}`;
+
+        document.getElementById('clock').innerText = formattedTime;
+    }
+    updateTime(); // Call immediately to prevent delay
+    setInterval(updateTime, 1000);
+</script>
+
+</html>

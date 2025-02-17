@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Project</title>
+    <style>
+        .mouse-element {
+            border: 2px solid red;
+            padding: 20px;
+            margin: 10px 0px;
+            cursor: pointer;
+        }
+
+        .mouse-element:hover {
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="click-btn">Click</button>
+    <br><br>
+    <button id="dblclick-btn">Double Click</button>
+    <br><br>
+    <button id="rightclick-btn">Right Click</button>
+    <br><br><br><br>
+
+    <span id="mouseenter" class="mouse-element">onMouseEnter</span>
+    <br><br><br><br><br><br>
+    <span id="mouseover" class="mouse-element">onMouseOver</span>
+    <br><br><br><br><br><br>
+    <span id="mouseout" class="mouse-element">onMouseOut</span>
+    <br><br><br><br><br><br>
+    <span id="mousedown" class="mouse-element">onMouseDown</span>
+    <br><br><br><br><br><br>
+    <span id="mouseup" class="mouse-element">onMouseUp</span>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            document.getElementById("click-btn").addEventListener("click", () => {
+                alert("This is a click event.");
+            });
+
+            document.getElementById("dblclick-btn").addEventListener("dblclick", () => {
+                alert("This is a double click event.");
+            });
+
+            document.getElementById("rightclick-btn").addEventListener("contextmenu", (event) => {
+                event.preventDefault();
+                alert("This is a right-click event.");
+            });
+
+            document.getElementById("mouseenter").addEventListener("mouseenter", () => {
+                alert("This is a mouse enter event.");
+            });
+
+            document.getElementById("mouseover").addEventListener("mouseover", () => {
+                alert("This is a mouse over event.");
+            });
+
+            document.getElementById("mouseout").addEventListener("mouseout", () => {
+                alert("This is a mouse out event.");
+            });
+
+            document.getElementById("mousedown").addEventListener("mousedown", () => {
+                alert("This is a mouse down event (mouse button pressed).");
+            });
+
+            document.getElementById("mouseup").addEventListener("mouseup", () => {
+                alert("This is a mouse up event (mouse button released).");
+            });
+        });
+    </script>
+
+</body>
+
+</html>
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event-project</title>
+    <style>
+        .mouse-element {
+            border: 2px solid red;
+            padding: 20px;
+            margin: 10px 0px;
+            cursor: pointer;
+        }
+
+        .mouse-element:hover {
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        function onClickEvent() {
+            alert(`this is a click event`);
+        }
+        function onDoubleClickEvent() {
+            alert(`this is a double click event`);
+        }
+        function onRightClickEvent(event) {
+            event.preventDefault(); // Prevent the default context menu
+            alert(`this is right click event`);
+        }
+        function onMouseHover() {
+            alert(`this is a mouse hover event`);
+        }
+        function onMouseOver() {
+            alert(`this is a mouse over event`);
+        }
+        function onMouseOut() {
+            alert(`this is a mouse out event triggered by mouse cursor moves out of the element`);
+        }
+        function onMouseDown() {
+            alert(`this is a mouse down event triggered by mouse click in.`);
+        }
+        function onMouseUp() {
+            alert(`this is a mouse up event triggered by mouse click out.`);
+        }
+    </script>
+
+    <button onclick="onClickEvent()">Click</button>
+    <br><br>
+    <button ondblclick="onDoubleClickEvent()">Double Click</button>
+    <br><br>
+    <button oncontextmenu="onRightClickEvent(event)">Right Click</button> <br>
+    <br><br>
+
+    <span onmouseenter="onMouseHover()" class="mouse-element">onMouseHover</span>
+    <br><br><br><br><br><br>
+    <span onmouseover="onMouseOver()" class="mouse-element">onMouseOver</span>
+    <br><br><br><br><br><br>
+    <span onmouseout="onMouseOut()" class="mouse-element">onMouseOut</span>
+    <br><br><br><br><br><br>
+    <span onmousedown="onMouseDown()" class="mouse-element">onMouseDown</span>
+    <br><br><br><br><br><br>
+    <span onmouseup="onMouseUp()" class="mouse-element">onMouseUp</span>
+    <br><br><br><br><br><br>
+
+</body>
+
+</html> -->

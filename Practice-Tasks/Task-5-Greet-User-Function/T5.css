@@ -1,0 +1,28 @@
+#timeContainer {
+    height: fit-content;
+    width: fit-content;
+}
+
+#timeContainer[data-time="morning"] {
+    color: #ffc0cb;
+    /* background: #ffc0cb;
+    color: #112A46; */
+}
+
+#timeContainer[data-time="afternoon"] {
+    color: #00ffff;
+    /* background: #00ffff;
+    color: #112A46; */
+}
+
+#timeContainer[data-time="evening"] {
+    color: #0000ff;
+    /* background: #0000ff;
+    color: #112A46; */
+}
+
+#timeContainer[data-time="night"] {
+    color: #000000;
+    /* background: #000000;
+    color: #fff; */
+}

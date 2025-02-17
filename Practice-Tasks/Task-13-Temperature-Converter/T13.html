@@ -1,0 +1,49 @@
+<!-- Task 13 - Temperature Converter
+Objective: Convert temperatures between Celsius and Fahrenheit. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 13 - Temperature Converter</title>
+</head>
+
+<body style="background-color: #212121; color: white; font-family: monospace; text-align: center;">
+    <h1>Temperature Converter</h1>
+
+    <input type="number" id="tempInput" placeholder="Enter temperature" step="0.1" style="padding: 10px; margin: 10px;">
+
+    <select id="tempUnit" style="padding: 10px;">
+        <option value="Celsius">Celsius</option>
+        <option value="Fahrenheit">Fahrenheit</option>
+    </select>
+
+    <button id="convertBtn" type="button" style="padding: 10px 15px; cursor: pointer;">Convert</button>
+
+    <div id="tempResult" style="margin-top: 20px; font-size: 18px;"></div>
+
+</body>
+<script>
+    document.getElementById('convertBtn').addEventListener('click', function () {
+        let temp = parseFloat(document.getElementById('tempInput').value); // Use parseFloat for decimal support
+        let unit = document.getElementById('tempUnit').value;
+        let tempResult = document.getElementById('tempResult');
+
+        if (isNaN(temp)) {
+            tempResult.innerHTML = 'Please enter a valid number.';
+            return;
+        }
+
+        if (unit === 'Celsius') {
+            let fahrenheit = (temp * 9 / 5) + 32;
+            tempResult.innerHTML = `${temp}°C is equal to ${fahrenheit.toFixed(1)}°F`;
+        } else if (unit === 'Fahrenheit') {
+            let celsius = (temp - 32) * 5 / 9;
+            tempResult.innerHTML = `${temp}°F is equal to ${celsius.toFixed(1)}°C`;
+        }
+    });
+</script>
+
+</html>

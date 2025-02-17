@@ -1,0 +1,53 @@
+<!-- Task 10: Get Current Date & Time
+Objective: Display the current date in DD-MM-YYYY HH:MM:SS format. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 10 - Current Date & Time</title>
+</head>
+<body style="background-color: #212121; color: white; font-family: monospace; text-align: center;">
+    <h1>Current Date & Time</h1>
+    <div class="dateNtime" style="font-size: 1rem; margin-top: 20px;"></div>
+    <button id="toggleFormat" style="margin-top: 1rem; padding: 5px; font-size: 1rem;">Switch to 12-Hour Format</button>
+
+    <script>
+        let is24HourFormat = true; // Default format is 24-hour
+
+        function updateTime() {
+            let now = new Date();
+            let day = String(now.getDate()).padStart(2, '0');
+            let month = String(now.getMonth() + 1).padStart(2, '0');
+            let year = now.getFullYear();
+            let hours = now.getHours();
+            let minutes = String(now.getMinutes()).padStart(2, '0');
+            let seconds = String(now.getSeconds()).padStart(2, '0');
+            
+            let formattedTime;
+
+            if (!is24HourFormat) {
+                let amPm = hours >= 12 ? "PM" : "AM";
+                hours = hours % 12 || 12;  // Convert 24-hour to 12-hour format
+                formattedTime = `${day}-${month}-${year} ${String(hours).padStart(2, '0')}:${minutes}:${seconds} ${amPm}`;
+            } else {
+                formattedTime = `${day}-${month}-${year} ${String(hours).padStart(2, '0')}:${minutes}:${seconds}`;
+            }
+
+            document.querySelector('.dateNtime').innerText = formattedTime;
+        }
+
+        // Toggle format when button is clicked
+        document.getElementById("toggleFormat").addEventListener("click", () => {
+            is24HourFormat = !is24HourFormat;
+            document.getElementById("toggleFormat").innerText = is24HourFormat 
+                ? "Switch to 12-Hour Format" 
+                : "Switch to 24-Hour Format";
+        });
+
+        updateTime(); // Call immediately to prevent delay
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+</html>

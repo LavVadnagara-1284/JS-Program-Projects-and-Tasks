@@ -1,0 +1,35 @@
+<!-- Task 8: Use Spread Operator -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 8 - Use Spread Operator</title>
+</head>
+
+<body style="background-color: #212121; color: white; margin: 1rem; font-family: monospace;">
+    <h1>Use Spread Operator</h1>
+
+    <h2>Original Arrays</h2>
+    <div class="ogArrayContainer"></div>
+
+    <h2>Merged Array</h2>
+    <div class="mergeArrayContainer"></div>
+
+</body>
+<script>
+    let ogArrayContainer = document.querySelector('.ogArrayContainer');
+    let array1 = [1, 2, 3];
+    let array2 = [4, 5, 6];
+
+    ogArrayContainer.innerHTML = `Array 1: [${array1}] <br> Array 2: [${array2}]`;
+
+    let mergeArrayContainer = document.querySelector('.mergeArrayContainer');
+    let mergedArray = [...array1, ...array2];
+
+    mergeArrayContainer.innerHTML = `Merged Array: [${mergedArray}]`;
+
+</script>
+
+</html>
