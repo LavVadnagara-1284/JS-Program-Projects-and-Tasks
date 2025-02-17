@@ -3,14 +3,65 @@ Objective: Display a random quote from a predefined list when a button is clicke
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task 12 - Generate a Random Quote</title>
+    <style>
+        body {
+            background-color: #212121;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 12px 24px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 8px;
+            background: #007aff;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background: #005ecb;
+            transform: scale(1.05);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        #quoteContainer {
+            margin-top: 30px;
+            font-size: 1.5rem;
+            font-style: italic;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            max-width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+    </style>
 </head>
+
 <body style="background-color: #212121; color: white; font-family: monospace; text-align: center;">
     <h1>Random Quote</h1>
-    <button type="button" id="randomQuoteBtn" style="padding: 10px 20px; font-size: 16px; cursor: pointer;">Get a Random Quote</button>
+    <button type="button" id="randomQuoteBtn" style="padding: 10px 20px; font-size: 16px; cursor: pointer;">Get a Random
+        Quote</button>
     <div id="quoteContainer" style="margin-top: 20px; font-size: 18px; font-style: italic;"></div>
 
 </body>
@@ -28,10 +79,18 @@ Objective: Display a random quote from a predefined list when a button is clicke
         "To wish you were someone else is to waste the person you are. - Ayushmann Khurrana"
     ];
 
-    document.getElementById('randomQuoteBtn').addEventListener('click', function() {
+    const quoteContainer = document.getElementById('quoteContainer');
+    const randomQuoteBtn = document.getElementById('randomQuoteBtn');
+
+    randomQuoteBtn.addEventListener('click', function () {
         const randomIndex = Math.floor(Math.random() * quotes.length);
-        document.getElementById('quoteContainer').innerHTML = `\`${quotes[randomIndex]}\``;
+        quoteContainer.style.opacity = 0; // Fade out effect
+        setTimeout(() => {
+            quoteContainer.innerHTML = quotes[randomIndex];
+            quoteContainer.style.opacity = 1; // Fade in effect
+        }, 300);
     });
 
 </script>
+
 </html>

@@ -1,0 +1,31 @@
+body {
+    background-color: #212121;
+    color: white;
+    font-family: monospace;
+    text-align: center;
+}
+
+#getDataBtn {
+    padding: 0.5rem 1rem;
+    background: #2e5fff;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#getDataBtn:hover {
+    background: #2346b8;
+}
+
+li {
+    list-style-type: none;
+    background: #333;
+    margin: 0px auto;
+    padding: 10px;
+    height: fit-content;
+    width: 50%;
+    /* border-radius: 5px; */
+    text-align: left;
+}

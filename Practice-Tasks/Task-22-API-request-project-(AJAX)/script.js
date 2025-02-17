@@ -65,6 +65,8 @@ function getData() {
     xhr.send();
 }
 
+document.getElementById('getDataBtn').addEventListener('click', getData);
+
 function createElement(tag, id, text = '') {
     let element = document.createElement(tag);
     if (id) element.id = id;

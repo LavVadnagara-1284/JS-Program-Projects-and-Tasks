@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,20 +16,24 @@
             color: white;
             font-family: monospace;
         }
+
         #retryBtn {
             display: none;
         }
+
         #dataContainer {
             margin-top: 10px;
             font-size: 1rem;
             white-space: pre-wrap;
         }
+
         .loading {
             font-size: 1rem;
             color: #ffa500;
         }
     </style>
 </head>
+
 <body>
     <h1>API Error Handling</h1>
     <button id="fetchDataBtn">Fetch Data</button>
@@ -47,7 +52,7 @@
 
         async function fetchData() {
             dataContainer.innerHTML = '<p class="loading">Loading...</p>';
-            errorMessage.textContent = ''; 
+            errorMessage.textContent = '';
             retryBtn.style.display = 'none';
 
             try {
@@ -78,4 +83,5 @@
         });
     </script>
 </body>
+
 </html>
