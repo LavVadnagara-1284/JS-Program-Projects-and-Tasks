@@ -100,7 +100,8 @@ body {
 
 #card img {
     background-color: black;
-    width: auto;
+    width: 10rem;
+    height: fit-content;
     border-radius: 0.625rem;
     box-shadow: 0rem 0rem 0.625rem black;
     margin: 1rem;
